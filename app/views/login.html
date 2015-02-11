@@ -1,0 +1,10 @@
+<div class="container">
+    <form name="loginForm" class="form-signin" ng-controller="AuthCtrl" ng-submit="login()" novalidate> 
+        <div class="row">
+            <input class="form-control" type="text" name="username" ng-model="username" placeholder="Login" required autofocus>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" type="submit" ng-disabled="loginForm.$invalid">Sign In</button>
+        </div>
+    </form>
+</div>
