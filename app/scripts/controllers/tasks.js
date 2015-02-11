@@ -20,8 +20,13 @@ angular.module('todoApp')
 
     $scope.addTodo = function () {
       $scope.todo.date = new Date();
+      $scope.todo.state = 'new';
       $scope.todos.push($scope.todo);
       $scope.todo = [];
+    };
+
+    $scope.setState = function (state) {
+      $scope.todo.state = state;
     };
 
     $scope.removeTodo = function (index) {
