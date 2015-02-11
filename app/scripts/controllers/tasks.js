@@ -19,7 +19,7 @@ angular.module('todoApp')
     }, true);
 
     $scope.addTodo = function () {
-      $scope.todo.date = new Date;
+      $scope.todo.date = new Date();
       $scope.todos.push($scope.todo);
       $scope.todo = [];
     };

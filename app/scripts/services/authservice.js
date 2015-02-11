@@ -15,7 +15,7 @@ angular.module('todoApp')
     var response = {}; 
       var storeName = localStorageService.get('username');
       
-      if (!storeName || username == storeName)
+      if (!storeName || username === storeName)
       {
           localStorageService.set('username', username);
           response.success = true;

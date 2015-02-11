@@ -30,5 +30,5 @@ angular.module('todoApp')
           $scope.todos.splice(index, 1);
         };
       }
-    }
+    };
   });
