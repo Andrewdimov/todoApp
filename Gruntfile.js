@@ -20,10 +20,13 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+  
+  require('load-grunt-tasks')(grunt);
+  
   // Define the configuration for all the tasks
   grunt.initConfig({
-
+    pkg: grunt.file.readJSON('package.json'),
+    ec2: 'ec2.json',
     // Project settings
     yeoman: appConfig,
 
@@ -373,8 +376,7 @@ module.exports = function (grunt) {
       }
     }
   });
-
-
+  
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -426,4 +428,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  
+  grunt.registerTask('deploy:production', ['build:release', 'ec2_deploy:production']);
+  
 };
