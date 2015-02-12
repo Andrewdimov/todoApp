@@ -1,7 +1,7 @@
 <div class="container" ng-controller="TasksCtrl">
     <!-- Todos list -->
     <div ui-sortable ng-model="todos">
-        <p class="input-group todo-item" " ng-repeat="todo in todos | orderBy: 'status'" style="cursor: move;">
+        <p class="input-group todo-item" " ng-repeat="todo in todos | orderBy:['status','title']" style="cursor: move;">
             <span ng-model="collapsed" ng-click="todo.isCollapsed = !todo.isCollapsed">{{todo.title}}</span><br/>
             <span ng-show="todo.isCollapsed">{{todo.description}}<br>
                 <span class="muted">{{todo.date | date:'MM/dd/yyyy @ h:mma'}}</span></span>
