@@ -10,6 +10,12 @@ body {
   background-color: #eee;
 }
 
+.todo-item {
+  padding: 6px;
+  background-color: white;
+  border: 1px solid gray;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

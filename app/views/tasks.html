@@ -1,25 +1,29 @@
 <div class="container" ng-controller="TasksCtrl">
     <!-- Todos list -->
     <div ui-sortable ng-model="todos">
-        <p class="input-group" ng-repeat="todo in todos" style="cursor: move;">
-            {{todo.title}}<br>
-            {{todo.description}}
-            <span class="muted">{{todo.date | date:'MM/dd/yyyy @ h:mma'}}</span>
+        <p class="input-group todo-item" " ng-repeat="todo in todos | orderBy: 'status'" style="cursor: move;">
+            <span ng-model="collapsed" ng-click="todo.isCollapsed = !todo.isCollapsed">{{todo.title}}</span><br/>
+            <span ng-show="todo.isCollapsed">{{todo.description}}<br>
+                <span class="muted">{{todo.date | date:'MM/dd/yyyy @ h:mma'}}</span></span>
             <span class="input-group-btn">
                 <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
             </span>
         </p>
     </div>
     <!-- Todos input -->
-    <form class="addTaskForm" ng-controller="TasksCtrl" novalidate>
-        <div class="row" ng-show="TasksCtrl.showForm">
+    <form name="addTaskForm" novalidate>
+        <div ng-show="error" class="row alert alert-danger">{{error}}</div>
+        <div class="row" ng-show="showForm">
             <input type="text" ng-model="todo.title" placeholder="Title" class="form-control" autofocus required>
         </div>
-        <div class="row" ng-show="TasksCtrl.showForm">
+        <div class="row" ng-show="showForm">
             <textarea ng-model="todo.description" placeholder="Description" class="form-control"></textarea>
         </div>
-        <div class="row">
-            <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="addTodo()">+ Add new</button>
+        <div class="row" ng-show="showForm">
+            <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="addTodo()">Add task</button>
+        </div>
+        <div class="row" ng-show="!showForm">
+            <button class="btn btn-primary form-control" ng-click="showForm=true">+ Add new</button>
         </div>
     </form>
 </div>

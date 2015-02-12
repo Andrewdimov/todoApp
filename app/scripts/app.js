@@ -29,10 +29,6 @@ angular
         templateUrl: 'views/tasks.html',
         controller: 'TasksCtrl'
       })
-      .when('/tasks/add', {
-        templateUrl: 'views/addtask.html',
-        controller: 'TasksCtrl'
-      })
       .when('/', {
         templateUrl: 'views/login.html',
         controller: 'AuthCtrl'

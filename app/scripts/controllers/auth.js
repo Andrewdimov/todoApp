@@ -19,6 +19,7 @@ angular.module('todoApp')
           } else {
             $scope.error = response.message;
             $scope.dataLoading = false;
+            $scope.loginForm.$invalid = true;
           }
         });
       };
