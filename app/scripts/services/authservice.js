@@ -23,15 +23,10 @@ angular.module('todoApp')
       else
       {
           response.message = 'Username is not correct';
+          response.hint = 'Your username for this device is ' + storeName;
           response.success = false;
       }
       callback(response);
-      
-      //$http.post('/api/authenticate', { username: username })
-      //    .success(function (response) {
-      //        callback(response);
-      //    });
-
     };
     return service;
   });

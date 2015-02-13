@@ -18,6 +18,7 @@ angular.module('todoApp')
             $location.path('/tasks');
           } else {
             $scope.error = response.message;
+            $scope.hint = response.hint;
             $scope.dataLoading = false;
             $scope.loginForm.$invalid = true;
           }

@@ -11,7 +11,7 @@ describe('Controller: TasksCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    TasksCtrl = $controller('MainCtrl', {
+    TasksCtrl = $controller('TasksCtrl', {
       $scope: scope
     });
   }));

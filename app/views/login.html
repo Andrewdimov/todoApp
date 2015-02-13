@@ -1,6 +1,7 @@
 <div class="container" ng-controller="AuthCtrl">
     <form name="loginForm" class="form-signin" ng-submit="login()" novalidate> 
         <div ng-show="error" class="row alert alert-danger">{{error}}</div>
+        <div ng-show="hint" class="row alert alert-warning">{{hint}}</div>
         <div class="row">
             <input class="form-control" type="text" name="username" ng-model="username" placeholder="Login" required autofocus>
         </div>
