@@ -8,24 +8,31 @@
  * Controller of the todoApp    
  */
 angular.module('todoApp')
-  .controller('TasksCtrl', function ($scope, TaskService, states) {
+  .controller('TasksCtrl', TasksCtrl);
+      
+  function TasksCtrl($scope, TaskService, statesService) {
     var service = TaskService;
-    $scope.taskList = service.taskList;
-    $scope.states = TaskService.states;
-    $scope.states = states;
-   
-    $scope.addTask = function(){
+    var vm = this;
+    
+    vm.taskList = service.taskList;
+    vm.states = TaskService.states;
+    vm.states = statesService;
+    vm.setState = setState;
+    vm.addTask = addTask;
+    vm.removeTask = removeTask;
+    
+    function addTask(){
       service.addTask($scope.task);
       $scope.task = [];
       $scope.showForm = false;
     }
 
-    $scope.setState =  function(index, state){
+    
+    function setState(index, state){
       service.setState(index,state);
     };
 
-    $scope.removeTask = function(index){
+    function removeTask(index){
         service.removeTask(index);
     }
-
-  });
+  };

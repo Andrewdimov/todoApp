@@ -1,18 +1,18 @@
 <div class="container">
     <!-- Todos list -->
-    <div ui-sortable class="row" ng-model="tasks" ng-repeat="filterState in states">
+    <div ui-sortable class="row" ng-model="tasks" ng-repeat="filterState in vm.states">
         <h4> {{filterState.name}}:</h4>
-        <p class="input-group todo-item" ng-repeat="task in taskList | filter: {state: filterState.id} | orderBy:['title']" style="cursor: move;">
+        <p class="input-group todo-item" ng-repeat="task in vm.taskList | filter: {state: filterState.id} | orderBy:['title']" style="cursor: move;">
             <strong ng-model="collapsed" ng-click="task.isCollapsed = !task.isCollapsed">{{task.title}}</strong><br/>
             <span class="inline" ng-show="task.isCollapsed">{{task.description}}<br>
                 <span class="text-muted">{{task.date | date:'MM/dd/yyyy @ h:mma'}}</span>
             </span>
             <span class="input-group-btn">
-                <button ng-show="task.state==2" class="btn btn-success" ng-click="setState($index, 1)" aria-label="Start"><i class="glyphicon glyphicon-play"></i></button>
-                <button ng-show="task.state==2 || task.state==1"class="btn btn-warning" ng-click="setState($index, 3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
-                <button ng-show="task.state==1 || task.state==3" class="btn btn-primary" ng-click="setState($index, 2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
-                <button ng-show="task.state==3" class="btn btn-success" ng-click="setState($index, 1)" aria-label="Resume"><i class="glyphicon glyphicon-play"></i></button>
-                <button class="btn btn-danger" ng-click="removeTask($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+                <button ng-show="task.state==2" class="btn btn-success" ng-click="vm.setState($index, 1)" aria-label="Start"><i class="glyphicon glyphicon-play"></i></button>
+                <button ng-show="task.state==2 || task.state==1"class="btn btn-warning" ng-click="vm.setState($index, 3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
+                <button ng-show="task.state==1 || task.state==3" class="btn btn-primary" ng-click="vm.setState($index, 2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
+                <button ng-show="task.state==3" class="btn btn-success" ng-click="vm.setState($index, 1)" aria-label="Resume"><i class="glyphicon glyphicon-play"></i></button>
+                <button class="btn btn-danger" ng-click="vm.removeTask($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
             </span>
         </p>
     </div>
@@ -20,18 +20,18 @@
         <!-- Todos input -->
         <form name="addTaskForm" novalidate ng-model="task">
             <div ng-show="error" class="alert alert-danger">{{error}}</div>
-            <div class="row" ng-show="showForm">
+            <div class="row" ng-show="vm.showForm">
                 <input type="text" ng-model="task.title" placeholder="Title" class="form-control" autofocus required>
             </div>
-            <div class="row" ng-show="showForm">
+            <div class="row" ng-show="vm.showForm">
                 <textarea ng-model="task.description" placeholder="Description" class="form-control"></textarea>
             </div>
-            <div class="row" ng-show="showForm">
-                <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="addTask()">Add task</button>
-                <button class="btn btn-danger form-control" ng-click="showForm = false">Cancel</button>
+            <div class="row" ng-show="vm.showForm">
+                <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="vm.addTask()">Add task</button>
+                <button class="btn btn-danger form-control" ng-click="vm.showForm = false">Cancel</button>
             </div>
-            <div class="row" ng-show="!showForm">
-                <button class="btn btn-primary form-control" ng-click="showForm=true">+ Add new</button>
+            <div class="row" ng-show="!vm.showForm">
+                <button class="btn btn-primary form-control" ng-click="vm.showForm=true">+ Add new</button>
             </div>
         </form>
     </div>

@@ -9,7 +9,9 @@
  */
 (function() {
 angular.module('todoApp')
-  .factory('TaskService', function (localStorageService) {
+  .factory('TaskService', TaskService);
+  
+  function TaskService(localStorageService) {
       
     var service = {
         taskList: localStorageService.get('taskList') || [],
@@ -37,5 +39,5 @@ angular.module('todoApp')
         localStorageService.set('taskList', service.taskList);
     };
     
-  });
+  };
 })();

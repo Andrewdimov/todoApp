@@ -8,7 +8,9 @@
  * Service in the todoApp.
  */
 angular.module('todoApp')
-  .service('AuthService', function (localStorageService) {
+  .service('AuthService', AuthService);
+  
+  function AuthService(localStorageService) {
     var service = {};
 
     service.Login = function (username, callback) {
@@ -29,4 +31,4 @@ angular.module('todoApp')
       callback(response);
     };
     return service;
-  });
+  };
