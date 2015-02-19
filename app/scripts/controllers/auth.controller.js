@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name todoApp.controller:AuthCtrl
+ * @name todoApp.controller:AuthController
  * @description
- * # AuthCtrl
+ * # AuthController
  * Controller of the todoApp
  */
 angular.module('todoApp')
-  .controller('AuthCtrl', AuthCtrl)
+  .controller('AuthController', AuthCtrl)
   
   AuthCtrl.$inject = ['$scope', '$location', 'AuthService'];
       

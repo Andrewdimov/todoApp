@@ -19,12 +19,12 @@ angular.module('todoApp')
     $routeProvider
       .when('/tasks', {
         templateUrl: 'views/tasks.html',
-        controller: 'TasksCtrl',
+        controller: 'TasksController',
         controllerAs: 'vm'
       })
       .when('/', {
         templateUrl: 'views/login.html',
-        controller: 'AuthCtrl',
+        controller: 'AuthController',
         controllerAs: 'vm'
       })
       .otherwise({

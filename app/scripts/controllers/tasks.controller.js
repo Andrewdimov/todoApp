@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name todoApp.controller:TasksCtrl
+ * @name todoApp.controller:TasksController
  * @description
- * # TasksCtrl
+ * # TasksController
  * Controller of the todoApp    
  */
 angular.module('todoApp')
-  .controller('TasksCtrl', TasksCtrl);
+  .controller('TasksController', TasksCtrl);
   
   TasksCtrl.$inject = ['$scope', 'TaskService', 'states'];
       
