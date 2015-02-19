@@ -1,33 +1,33 @@
 <div class="container">
     <!-- Todos list -->
-    <div ui-sortable class="row" ng-model="todos" ng-repeat="filterState in states">
-        <h4 ng-show="todos"> {{filterState.name}}:</h4>
-        <p class="input-group todo-item" ng-repeat="todo in todos | filter: {state: filterState.id} | orderBy:['title']" style="cursor: move;">
-            <strong ng-model="collapsed" ng-click="todo.isCollapsed = !todo.isCollapsed">{{todo.title}}</strong><br/>
-            <span class="inline" ng-show="todo.isCollapsed">{{todo.description}}<br>
-                <span class="text-muted">{{todo.date | date:'MM/dd/yyyy @ h:mma'}}</span>
+    <div ui-sortable class="row" ng-model="tasks" ng-repeat="filterState in states">
+        <h4> {{filterState.name}}:</h4>
+        <p class="input-group todo-item" ng-repeat="task in taskList | filter: {state: filterState.id} | orderBy:['title']" style="cursor: move;">
+            <strong ng-model="collapsed" ng-click="task.isCollapsed = !task.isCollapsed">{{task.title}}</strong><br/>
+            <span class="inline" ng-show="task.isCollapsed">{{task.description}}<br>
+                <span class="text-muted">{{task.date | date:'MM/dd/yyyy @ h:mma'}}</span>
             </span>
             <span class="input-group-btn">
-                <button ng-show="todo.state==2" class="btn btn-success" ng-click="setState($index,1)" aria-label="Start"><i class="glyphicon glyphicon-play"></i></button>
-                <button ng-show="[1, 2].indexOf(todo.state)!=-1"class="btn btn-warning" ng-click="setState($index,3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
-                <button ng-show="[1, 3].indexOf(todo.state)!=-1" class="btn btn-primary" ng-click="setState($index,2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
-                <button ng-show="todo.state==3" class="btn btn-success" ng-click="setState($index,1)" aria-label="Resume"><i class="glyphicon glyphicon-play"></i></button>
-                <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+                <button ng-show="task.state==2" class="btn btn-success" ng-click="setState(1)" aria-label="Start"><i class="glyphicon glyphicon-play"></i></button>
+                <button ng-show="[1, 2].indexOf(task.state)!=-1"class="btn btn-warning" ng-click="setState(3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
+                <button ng-show="[1, 3].indexOf(task.state)!=-1" class="btn btn-primary" ng-click="setState(2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
+                <button ng-show="task.state==3" class="btn btn-success" ng-click="setState(1)" aria-label="Resume"><i class="glyphicon glyphicon-play"></i></button>
+                <button class="btn btn-danger" ng-click="removeTask($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
             </span>
         </p>
     </div>
     <div class="row">
         <!-- Todos input -->
-        <form name="addTaskForm" novalidate ng-model="todo">
+        <form name="addTaskForm" novalidate ng-model="task">
             <div ng-show="error" class="alert alert-danger">{{error}}</div>
             <div class="row" ng-show="showForm">
-                <input type="text" ng-model="todo.title" placeholder="Title" class="form-control" autofocus required>
+                <input type="text" ng-model="task.title" placeholder="Title" class="form-control" autofocus required>
             </div>
             <div class="row" ng-show="showForm">
-                <textarea ng-model="todo.description" placeholder="Description" class="form-control"></textarea>
+                <textarea ng-model="task.description" placeholder="Description" class="form-control"></textarea>
             </div>
             <div class="row" ng-show="showForm">
-                <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="addTodo()">Add task</button>
+                <button class="btn btn-primary form-control" ng-disabled="addTaskForm.$invalid" ng-click="addTask()">Add task</button>
                 <button class="btn btn-danger form-control" ng-click="showForm = false">Cancel</button>
             </div>
             <div class="row" ng-show="!showForm">

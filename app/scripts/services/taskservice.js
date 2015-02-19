@@ -8,31 +8,40 @@
  * Factory in the todoApp.
  */
 angular.module('todoApp')
-  .factory('TaskService', function ($rootScope, localStorageService) {
+  .factory('TaskService', function (localStorageService) {
+      
+    var service = {
+        taskList: localStorageService.get('taskList') || [],
+        addTask: addTask,   
+        removeTask: removeTask,
+        states: [
+          { id: 1,  name: 'In Progress'},
+          { id: 2, name: 'New'},
+          { id: 3, name: 'Done'}
+        ]
+    };
     
-    var service = {};
-    $rootScope.todo = [];
+    return service;
     
-    service.getList = function(){
-      $rootScope.todos = localStorageService.get('todos') || [];
-      $rootScope.$watch('todos', function () {
-        localStorageService.set('todos', $rootScope.todos);
+    function addTask(task) {
+      task.date = new Date();
+      task.state = '2';
+      service.taskList.push(task);
+      localStorageService.set('taskList', service.taskList);
+    };
+
+    function setState(index,state) {
+      service.taskList[index].state = state;
+    };
+
+    function removeTask(index) {
+      service.todos.splice(index, 1);
+    };
+    
+    (function(){
+      service.$watch('taskList', function () {
+        localStorageService.set('taskList', service.taskList);
       }, true);  
-    };
-    $rootScope.addTodo = function () {
-      $rootScope.todo.date = new Date();
-      $rootScope.todo.state = '2';
-      $rootScope.todos.push($rootScope.todo);
-      $rootScope.todo = [];
-      $rootScope.showForm = false;
-    };
-
-    $rootScope.setState = function (index,state) {
-      $rootScope.todos[index].state = state;
-    };
-
-    $rootScope.removeTodo = function (index) {
-      $rootScope.todos.splice(index, 1);
-    };
-    return  service;
+    })();
+    
   });

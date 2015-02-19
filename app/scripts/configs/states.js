@@ -8,7 +8,7 @@
  * Constant in the todoApp.
  */
 angular.module('todoApp')
-  .constant('states ', [
+  .constant('states', [
         {
             id: 1,
             name: 'In Progress'
