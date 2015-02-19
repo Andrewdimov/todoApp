@@ -14,12 +14,7 @@ angular.module('todoApp')
         taskList: localStorageService.get('taskList') || [],
         addTask: addTask,
         setState: setState,
-        removeTask: removeTask,
-        states: [
-          { id: 1,  name: 'In Progress'},
-          { id: 2, name: 'New'},
-          { id: 3, name: 'Done'}
-        ]
+        removeTask: removeTask
     };
     
     return service;
