@@ -1,7 +1,7 @@
 <div class="container">
-    <form name="loginForm" class="form-signin" ng-submit="login()" novalidate> 
-        <div ng-show="error" class="row alert alert-danger">{{error}}</div>
-        <div ng-show="hint" class="row alert alert-warning">{{hint}}</div>
+    <form name="loginForm" class="form-signin" ng-submit="vm.login()" novalidate> 
+        <div ng-show="vm.error" class="row alert alert-danger">{{vm.error}}</div>
+        <div ng-show="vm.hint" class="row alert alert-warning">{{vm.hint}}</div>
         <div class="row">
             <input class="form-control" type="text" name="username" ng-model="username" placeholder="Login" required autofocus>
         </div>

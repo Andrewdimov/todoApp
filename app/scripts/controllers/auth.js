@@ -11,17 +11,18 @@ angular.module('todoApp')
   .controller('AuthCtrl', AuthCtrl)
       
   function AuthCtrl($scope, $location, AuthService) {
-
-    $scope.login = function () {
-      $scope.dataLoading = true;
+    var vm = this;
+    
+    vm.login = function () {
+      vm.dataLoading = true;
       AuthService.Login($scope.username, function (response) {
 
         if (response.success) {
           $location.path('/tasks');
         } else {
-          $scope.error = response.message;
-          $scope.hint = response.hint;
-          $scope.dataLoading = false;
+          vm.error = response.message;
+          vm.hint = response.hint;
+          vm.dataLoading = false;
           $scope.loginForm.$invalid = true;
         }
       });
