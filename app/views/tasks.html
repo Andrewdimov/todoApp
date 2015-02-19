@@ -9,8 +9,8 @@
             </span>
             <span class="input-group-btn">
                 <button ng-show="task.state==2" class="btn btn-success" ng-click="setState($index, 1)" aria-label="Start"><i class="glyphicon glyphicon-play"></i></button>
-                <button ng-show="[1, 2].indexOf(task.state)!=-1"class="btn btn-warning" ng-click="setState($index, 3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
-                <button ng-show="[1, 3].indexOf(task.state)!=-1" class="btn btn-primary" ng-click="setState($index, 2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
+                <button ng-show="task.state==2 || task.state==1"class="btn btn-warning" ng-click="setState($index, 3)" aria-label="Done"><i class="glyphicon glyphicon-stop"></i></button>
+                <button ng-show="task.state==1 || task.state==3" class="btn btn-primary" ng-click="setState($index, 2)" aria-label="Reset"><i class="glyphicon glyphicon-refresh"></i></button>
                 <button ng-show="task.state==3" class="btn btn-success" ng-click="setState($index, 1)" aria-label="Resume"><i class="glyphicon glyphicon-play"></i></button>
                 <button class="btn btn-danger" ng-click="removeTask($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
             </span>

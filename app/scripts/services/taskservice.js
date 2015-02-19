@@ -7,6 +7,7 @@
  * # taskservice
  * Factory in the todoApp.
  */
+(function() {
 angular.module('todoApp')
   .factory('TaskService', function (localStorageService) {
       
@@ -28,16 +29,13 @@ angular.module('todoApp')
 
     function setState(index,state) {
       service.taskList[index].state = state;
+        localStorageService.set('taskList', service.taskList);
     };
 
     function removeTask(index) {
       service.taskList.splice(index, 1);
+        localStorageService.set('taskList', service.taskList);
     };
     
-    (function(){
-      service.$watch('taskList', function () {
-        localStorageService.set('taskList', service.taskList);
-      }, true);  
-    })();
-    
   });
+})();
