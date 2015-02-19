@@ -13,10 +13,20 @@ angular.module('todoApp')
   AuthService.$inject = ['localStorageService'];
   
   function AuthService(localStorageService) {
-    var service = {};
-
-    service.Login = function (username, callback) {
-    var response = {}; 
+    var service = {
+        Login: Login
+    }
+    
+    return service;
+    
+    function Login(username, callback) {
+      
+      var response = {
+          message: null,
+          hint: null,
+          success: false,
+      };
+      
       var storeName = localStorageService.get('username');
       
       if (!storeName || username === storeName)
@@ -32,5 +42,4 @@ angular.module('todoApp')
       }
       callback(response);
     };
-    return service;
   };
