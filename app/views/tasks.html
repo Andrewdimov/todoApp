@@ -1,6 +1,6 @@
 <div class="container">
     <!-- Todos list -->
-    <div ui-sortable class="row" ng-model="tasks" ng-repeat="filterState in vm.states">
+    <div class="row" ng-model="tasks" ng-repeat="filterState in vm.states">
         <h4> {{filterState.name}}:</h4>
         <p class="input-group todo-item" ng-repeat="task in vm.taskList | filter: {state: filterState.id} | orderBy:['title']" style="cursor: move;">
             <strong ng-model="collapsed" ng-click="task.isCollapsed = !task.isCollapsed">{{task.title}}</strong><br/>

@@ -1,33 +1,12 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name todoApp.states
+ * @ngdoc config
  * @description
- * # states
- * Constant in the todoApp.
+ * # config
+ * Config in the todoApp.
  */
 angular.module('todoApp')
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
   }])
-  .config(config);
-  
-  config.$inject = ['$routeProvider'];
-  
-  function config ($routeProvider) {
-    $routeProvider
-      .when('/tasks', {
-        templateUrl: 'views/tasks.html',
-        controller: 'TasksController',
-        controllerAs: 'vm'
-      })
-      .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'AuthController',
-        controllerAs: 'vm'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  }
