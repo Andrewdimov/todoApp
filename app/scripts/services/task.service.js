@@ -11,6 +11,8 @@
 angular.module('todoApp')
   .factory('TaskService', TaskService);
   
+  TaskService.$inject = ['localStorageService'];
+  
   function TaskService(localStorageService) {
       
     var service = {

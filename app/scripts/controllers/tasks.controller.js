@@ -9,14 +9,16 @@
  */
 angular.module('todoApp')
   .controller('TasksCtrl', TasksCtrl);
+  
+  TasksCtrl.$inject = ['$scope', 'TaskService', 'states'];
       
-  function TasksCtrl($scope, TaskService, statesService) {
+  function TasksCtrl($scope, TaskService, states) {
     var service = TaskService;
     var vm = this;
     
     vm.taskList = service.taskList;
     vm.states = TaskService.states;
-    vm.states = statesService;
+    vm.states = states;
     vm.setState = setState;
     vm.addTask = addTask;
     vm.removeTask = removeTask;
@@ -24,7 +26,7 @@ angular.module('todoApp')
     function addTask(){
       service.addTask($scope.task);
       $scope.task = [];
-      $scope.showForm = false;
+      vm.showForm = false;
     }
 
     

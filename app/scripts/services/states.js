@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name todoApp.statesService
+ * @name todoApp.states
  * @description
- * # statesService
+ * # states
  * Constant in the todoApp.
  */
 angular.module('todoApp')
-  .constant("statesService",  [
+  .constant("states",  [
         {
             id: 1,
             name: 'In Progress'

@@ -12,7 +12,9 @@ angular.module('todoApp')
     localStorageServiceProvider.setPrefix('ls');
   }])
   .config(config);
-      
+  
+  config.$inject = ['$routeProvider'];
+  
   function config ($routeProvider) {
     $routeProvider
       .when('/tasks', {

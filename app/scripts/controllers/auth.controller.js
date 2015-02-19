@@ -9,6 +9,8 @@
  */
 angular.module('todoApp')
   .controller('AuthCtrl', AuthCtrl)
+  
+  AuthCtrl.$inject = ['$scope', '$location', 'AuthService'];
       
   function AuthCtrl($scope, $location, AuthService) {
     var vm = this;

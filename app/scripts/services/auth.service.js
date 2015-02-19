@@ -10,6 +10,8 @@
 angular.module('todoApp')
   .service('AuthService', AuthService);
   
+  AuthService.$inject = ['localStorageService'];
+  
   function AuthService(localStorageService) {
     var service = {};
 
