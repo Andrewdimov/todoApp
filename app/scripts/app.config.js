@@ -11,7 +11,9 @@ angular.module('todoApp')
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
   }])
-  .config(function ($routeProvider) {
+  .config(config);
+      
+  function config ($routeProvider) {
     $routeProvider
       .when('/tasks', {
         templateUrl: 'views/tasks.html',
@@ -26,4 +28,4 @@ angular.module('todoApp')
       .otherwise({
         redirectTo: '/'
       });
-  })
+  }
