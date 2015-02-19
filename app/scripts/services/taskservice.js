@@ -12,7 +12,8 @@ angular.module('todoApp')
       
     var service = {
         taskList: localStorageService.get('taskList') || [],
-        addTask: addTask,   
+        addTask: addTask,
+        setState: setState,
         removeTask: removeTask,
         states: [
           { id: 1,  name: 'In Progress'},
@@ -35,7 +36,7 @@ angular.module('todoApp')
     };
 
     function removeTask(index) {
-      service.todos.splice(index, 1);
+      service.taskList.splice(index, 1);
     };
     
     (function(){

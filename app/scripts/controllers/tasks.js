@@ -19,9 +19,13 @@ angular.module('todoApp')
       $scope.showForm = false;
     }
 
-//    $scope.setState = service.setState($scope.index,$scope.state);
-//
-//    $scope.removeTask = service.removeTask($scope.index);
+    $scope.setState =  function(index, state){
+      service.setState(index,state);
+    };
+
+    $scope.removeTask = function(index){
+        service.removeTask(index);
+    }
 
     $scope.states = service.states;
   });
