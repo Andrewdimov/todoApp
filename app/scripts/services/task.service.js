@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc service
- * @name todoApp.taskservice
+ * @name todoApp.TaskService
  * @description
- * # taskservice
+ * # TaskService
  * Factory in the todoApp.
  */
 (function() {
