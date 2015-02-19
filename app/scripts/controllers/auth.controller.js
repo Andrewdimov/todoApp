@@ -14,8 +14,12 @@ angular.module('todoApp')
       
   function AuthCtrl($scope, $location, AuthService) {
     var vm = this;
+    vm.login = login;
+    vm.error = null;
+    vm.hint = null;
+    vm.dataLoading = false;
     
-    vm.login = function () {
+    function login() {
       vm.dataLoading = true;
       AuthService.Login($scope.username, function (response) {
 
